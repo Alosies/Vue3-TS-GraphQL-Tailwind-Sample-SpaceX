@@ -7,7 +7,6 @@
           :key="launch?.id || undefined"
           :launch="launch"
         />
-
         <!-- TODO: Add pagination to fetch more data -->
       </section>
       <!-- A better custom loader can be used below -->

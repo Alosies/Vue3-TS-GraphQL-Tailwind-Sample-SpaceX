@@ -37,6 +37,7 @@
               class="grid gap-4"
               :class="(shipsWithImage?.length || 0) > 1 ? 'sm:grid-cols-2' : ''"
             >
+              <!-- TODO: Extract ShipsData to a component -->
               <div v-for="(ship, index) in shipsWithImage" :key="index" class="bg-white">
                 <img
                   v-if="ship?.image"
@@ -75,7 +76,6 @@
 import { SLoader, SMissingDataNotifier } from '@/components/customComponents'
 import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import MainRouteName from '@/router/constants'
 import { formatDate } from '@/modules/utilities'
 import useGraphToasts from '@/graphql/composables'
 import { useLazyQueryLaunch } from '../composables/graph'
