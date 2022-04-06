@@ -1,0 +1,15 @@
+query launches($launch_year: String) {
+  launches(find: {launch_year: $launch_year}, limit: 10) {
+    mission_name
+    launch_site {
+      site_name_long
+    }
+    id
+    details
+    launch_year
+    launch_date_utc
+    ships {
+      image
+    }
+  }
+}
