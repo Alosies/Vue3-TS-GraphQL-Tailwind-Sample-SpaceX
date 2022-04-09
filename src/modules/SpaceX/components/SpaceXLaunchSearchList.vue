@@ -50,6 +50,9 @@ watch(
   (val) => {
     if (val) loadLaunchesData(val)
   },
+  {
+    immediate: true,
+  },
 )
 
 useGraphToasts({
