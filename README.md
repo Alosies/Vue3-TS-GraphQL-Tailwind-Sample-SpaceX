@@ -2,12 +2,20 @@
 
 Clone this repo, run `npm install` and start the project using `npm run dev`.
 
-## Additional Hints
+### Project info
 
-### Recommended IDE Setup
+This is an extremely simple app that demonstrates how the technologies mentioned below come together.
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+### Technologies used
 
-### Type Support For `.vue` Imports in TS
+- Vue 3 Composition API ( Script setup Syntax )
+- Typescript
+- TailwindCss
+- GraphQL with Codegen Composables
+- Vue apollo
+- Vitest
+- Vite
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
+### Deployed Version
+
+- [Sample App](https://alosies-vue3-ts-graph-ql-tailwind-sample-space-x.vercel.app/) 
