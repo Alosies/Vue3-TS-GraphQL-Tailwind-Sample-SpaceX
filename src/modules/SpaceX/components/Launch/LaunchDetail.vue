@@ -31,32 +31,7 @@
           </h1>
           <p class="my-2 font-bold">Launch Date: {{ formatDate(launch?.launch_date_utc) }}</p>
           <p class="text-justify my-2">{{ launch.details }}</p>
-          <div v-if="(shipsWithImage?.length || 0) > 0" class="grid gap-4">
-            <h4 class="font-bold text-2xl my-4">Ships</h4>
-            <div
-              class="grid gap-4"
-              :class="(shipsWithImage?.length || 0) > 1 ? 'sm:grid-cols-2' : ''"
-            >
-              <!-- TODO: Extract ShipsData to a component -->
-              <div v-for="(ship, index) in shipsWithImage" :key="index" class="bg-white">
-                <img
-                  v-if="ship?.image"
-                  :src="ship?.image"
-                  :alt="`${ship?.name} Ship Image`"
-                  class="object-cover h-52 w-full"
-                />
-                <div class="p-3">
-                  <h5 class="font-bold text-xl">{{ ship?.name }}</h5>
-                  <p class="font-semibold">Home Port: {{ ship?.home_port }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <SMissingDataNotifier v-else>
-            No Data available regarding the ships for the mission
-            {{ launch.mission_name }}</SMissingDataNotifier
-          >
+          <ShipList v-bind="shipsListComponentProps" />
         </template>
 
         <!-- when Launch is not found -->
@@ -76,9 +51,11 @@
 import { SLoader, SMissingDataNotifier } from '@/components/customComponents'
 import { computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { formatDate } from '@/modules/utilities'
+import { formatDate } from '@/modules/common/utilities'
 import useGraphToasts from '@/graphql/composables'
-import { useLazyQueryLaunch } from '../composables/graph'
+import ShipList from '@/modules/SpaceX/components/Ship/ShipList.vue'
+import type { Props as ShipListProps } from '@/modules/SpaceX/components/Ship/ShipList.vue'
+import { useLazyQueryLaunch } from '../../composables/graph'
 
 const route = useRoute()
 const router = useRouter()
@@ -91,7 +68,12 @@ useGraphToasts({
 
 const launchId = computed(() => route.params.launchId)
 
-const shipsWithImage = computed(() => launch.value?.ships?.filter((ship) => Boolean(ship?.image)))
+const shipsListComponentProps = computed((): ShipListProps => {
+  return {
+    context: `mission name ${launch.value?.mission_name}`,
+    shipList: launch.value?.ships?.flatMap((v) => (v ? [v] : [])),
+  }
+})
 
 function handleClickOnBackButton() {
   router.go(-1)

@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { formatDate } from '@/modules/utilities'
-import { LaunchSummaryFromList } from '@/models'
+import { formatDate } from '@/modules/common/utilities'
+import { LaunchSummaryFromList } from '@/modules/SpaceX/models'
 import { useRouter } from 'vue-router'
 import MainRouteName from '@/router/constants'
 import { PropType } from 'vue'

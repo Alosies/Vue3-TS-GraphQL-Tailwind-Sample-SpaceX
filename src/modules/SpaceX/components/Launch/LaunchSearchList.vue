@@ -5,7 +5,7 @@
         <div v-if="launches?.length">
           <div class="font-bold mb-3">Launches from the year {{ launchYear }}</div>
           <section class="grid sm:grid-cols-2 gap-3">
-            <SpaceXLaunchSummaryCard
+            <LaunchSummaryCard
               v-for="launch in launches"
               :key="launch?.id || undefined"
               :launch="launch"
@@ -33,8 +33,8 @@ import { SLoader, SMissingDataNotifier } from '@/components/customComponents'
 
 import useGraphToasts from '@/graphql/composables'
 import { watch } from 'vue'
-import { useLazyQueryLaunches } from '../composables/graph'
-import SpaceXLaunchSummaryCard from './SpaceXLaunchSummaryCard.vue'
+import { useLazyQueryLaunches } from '../../composables/graph'
+import LaunchSummaryCard from './LaunchSummaryCard.vue'
 
 const props = defineProps({
   launchYear: {

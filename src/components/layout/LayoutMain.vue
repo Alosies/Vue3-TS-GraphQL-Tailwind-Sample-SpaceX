@@ -28,9 +28,9 @@
     </nav>
     <main class="flex justify-center">
       <router-view v-slot="{ Component }">
-        <keep-alive>
+        <Transition name="fade" mode="out-in">
           <component :is="Component" />
-        </keep-alive>
+        </Transition>
       </router-view>
     </main>
   </div>

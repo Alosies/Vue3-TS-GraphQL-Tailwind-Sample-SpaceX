@@ -2,7 +2,7 @@
   <div class="my-5">
     <transition name="fade" mode="out-in">
       <section v-if="!isLoadingLaunchesPast" class="grid sm:grid-cols-2 gap-3">
-        <SpaceXLaunchSummaryCard
+        <LaunchSummaryCard
           v-for="launch in launchesPast"
           :key="launch?.id || undefined"
           :launch="launch"
@@ -19,13 +19,13 @@
 import SLoader from '@/components/customComponents/SLoader.vue'
 
 import useGraphToasts from '@/graphql/composables'
-import { useQueryLaunchesPast } from '../composables/graph'
-import SpaceXLaunchSummaryCard from './SpaceXLaunchSummaryCard.vue'
+import { useQueryLaunchesPast } from '../../composables/graph'
+import LaunchSummaryCard from './LaunchSummaryCard.vue'
 
 const { launchesPast, isLoadingLaunchesPast, errorInLaunchesPast } = useQueryLaunchesPast()
 
 useGraphToasts({
-  result: launchesPast,
+  // result: launchesPast,
   error: errorInLaunchesPast,
   dataName: 'Past Launches',
 })

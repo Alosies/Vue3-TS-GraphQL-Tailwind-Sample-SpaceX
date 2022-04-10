@@ -1,8 +1,8 @@
 <template>
   <div class="justify-center max-w-5xl mt-10 p-4">
-    <SpaceXLaunchDetail />
+    <LaunchDetail />
   </div>
 </template>
 <script setup lang="ts">
-import SpaceXLaunchDetail from '@/modules/SpaceX/components/SpaceXLaunchDetail.vue'
+import LaunchDetail from '@/modules/SpaceX/components/Launch/LaunchDetail.vue'
 </script>

@@ -6,14 +6,17 @@ query launch($id: ID!) {
     launch_year
     launch_success
     launch_site {
+      id: site_id
       site_name
     }
     ships {
+      id
       image
       name
       home_port
     }
     links {
+      id: article_link
       flickr_images
     }
     launch_date_utc

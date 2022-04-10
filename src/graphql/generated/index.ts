@@ -1325,19 +1325,19 @@ export type LaunchQueryVariables = Exact<{
 }>;
 
 
-export type LaunchQuery = { __typename?: 'Query', launch?: { __typename?: 'Launch', id?: string | null | undefined, mission_name?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_success?: boolean | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', image?: string | null | undefined, name?: string | null | undefined, home_port?: string | null | undefined } | null | undefined> | null | undefined, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null | undefined> | null | undefined } | null | undefined } | null | undefined };
+export type LaunchQuery = { __typename?: 'Query', launch?: { __typename?: 'Launch', id?: string | null | undefined, mission_name?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_success?: boolean | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name?: string | null | undefined, id?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', id?: string | null | undefined, image?: string | null | undefined, name?: string | null | undefined, home_port?: string | null | undefined } | null | undefined> | null | undefined, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null | undefined> | null | undefined, id?: string | null | undefined } | null | undefined } | null | undefined };
 
 export type LaunchesQueryVariables = Exact<{
   launch_year?: Maybe<Scalars['String']>;
 }>;
 
 
-export type LaunchesQuery = { __typename?: 'Query', launches?: Array<{ __typename?: 'Launch', mission_name?: string | null | undefined, id?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name_long?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', image?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+export type LaunchesQuery = { __typename?: 'Query', launches?: Array<{ __typename?: 'Launch', mission_name?: string | null | undefined, id?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name_long?: string | null | undefined, id?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', id?: string | null | undefined, image?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 export type LaunchesPastQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LaunchesPastQuery = { __typename?: 'Query', launchesPast?: Array<{ __typename?: 'Launch', mission_name?: string | null | undefined, id?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name_long?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', image?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
+export type LaunchesPastQuery = { __typename?: 'Query', launchesPast?: Array<{ __typename?: 'Launch', mission_name?: string | null | undefined, id?: string | null | undefined, details?: string | null | undefined, launch_year?: string | null | undefined, launch_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_name_long?: string | null | undefined, id?: string | null | undefined } | null | undefined, ships?: Array<{ __typename?: 'Ship', id?: string | null | undefined, image?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 
 export const LaunchDocument = gql`
@@ -1349,14 +1349,17 @@ export const LaunchDocument = gql`
     launch_year
     launch_success
     launch_site {
+      id: site_id
       site_name
     }
     ships {
+      id
       image
       name
       home_port
     }
     links {
+      id: article_link
       flickr_images
     }
     launch_date_utc
@@ -1391,6 +1394,7 @@ export const LaunchesDocument = gql`
   launches(find: {launch_year: $launch_year}, limit: 10) {
     mission_name
     launch_site {
+      id: site_id
       site_name_long
     }
     id
@@ -1398,6 +1402,7 @@ export const LaunchesDocument = gql`
     launch_year
     launch_date_utc
     ships {
+      id
       image
     }
   }
@@ -1431,6 +1436,7 @@ export const LaunchesPastDocument = gql`
   launchesPast(limit: 10) {
     mission_name
     launch_site {
+      id: site_id
       site_name_long
     }
     id
@@ -1438,6 +1444,7 @@ export const LaunchesPastDocument = gql`
     launch_year
     launch_date_utc
     ships {
+      id
       image
     }
   }

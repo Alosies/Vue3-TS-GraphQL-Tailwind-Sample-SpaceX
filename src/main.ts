@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import Toast from 'vue-toastification'
+import PrimeVue from 'primevue/config'
 
 import './styles/main.css'
 import 'vue-toastification/dist/index.css'
@@ -13,4 +14,4 @@ const app = createApp(App)
 
 initializeRouter(app)
 
-app.provide(DefaultApolloClient, apolloClient).use(Toast).mount('#app')
+app.provide(DefaultApolloClient, apolloClient).use(Toast).use(PrimeVue).mount('#app')

@@ -12,7 +12,7 @@ type ResultData =
   | undefined
 
 interface graphToastArguments {
-  result:
+  result?:
     | Readonly<Ref<Readonly<ResultData[] | undefined | null>>>
     | Readonly<Ref<Readonly<ResultData>>>
   error: Ref<import('@apollo/client/errors').ApolloError | null>
@@ -25,7 +25,7 @@ function useGraphToasts(data: graphToastArguments) {
 
   const dataNameForDisplay = computed(() => {
     if (dataName) return dataName
-    const data = result.value
+    const data = result?.value
     if (!data) return 'data'
     if (_isArray(data)) {
       return data?.[0]?.__typename
@@ -39,15 +39,18 @@ function useGraphToasts(data: graphToastArguments) {
     () => `Error loading ${dataNameForDisplay.value}. Please try gain later`,
   )
 
-  watch(result, (newVal) => {
-    if (newVal) {
-      if (Array.isArray(newVal) && newVal.length === 0) {
-        toast.error('Could not find any data')
-        return
+  watch(
+    () => result,
+    (newVal) => {
+      if (newVal) {
+        if (Array.isArray(newVal) && newVal.length === 0) {
+          toast.error('Could not find any data')
+          return
+        }
+        toast.success(successMessage.value)
       }
-      toast.success(successMessage.value)
-    }
-  })
+    },
+  )
 
   watch(error, (newVal) => {
     if (newVal) {

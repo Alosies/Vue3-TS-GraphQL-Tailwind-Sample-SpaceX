@@ -14,10 +14,10 @@
     <input
       v-model="launchYear"
       type="text"
-      class="p-3 rounded-full my-3 text-center text-xl font-bold"
+      class="p-3 rounded-full my-3 text-center text-xl font-bold border-2 border-gray-600"
     />
 
-    <SpaceXLaunchSearchList
+    <LaunchSearchList
       v-if="typeof launchYearInSearch === 'string'"
       :launch-year="launchYearInSearch"
     />
@@ -29,7 +29,7 @@ import { useRoute, useRouter } from 'vue-router'
 import MainRoutesName from '@/router/constants'
 import { ref, watch, computed } from 'vue'
 import { useMagicKeys } from '@vueuse/core' // This could be implementer even with the native @keyup listener for the current use case
-import SpaceXLaunchSearchList from '@/modules/SpaceX/components/SpaceXLaunchSearchList.vue'
+import LaunchSearchList from '@/modules/SpaceX/components/Launch/LaunchSearchList.vue'
 
 const router = useRouter()
 const route = useRoute()

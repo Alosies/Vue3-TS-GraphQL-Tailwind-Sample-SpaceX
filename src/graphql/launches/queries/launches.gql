@@ -2,6 +2,7 @@ query launches($launch_year: String) {
   launches(find: {launch_year: $launch_year}, limit: 10) {
     mission_name
     launch_site {
+      id: site_id
       site_name_long
     }
     id
@@ -9,6 +10,7 @@ query launches($launch_year: String) {
     launch_year
     launch_date_utc
     ships {
+      id
       image
     }
   }

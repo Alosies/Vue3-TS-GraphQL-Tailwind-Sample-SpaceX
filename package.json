@@ -20,6 +20,8 @@
     "graphql": "^16.0.1",
     "graphql-tag": "^2.12.6",
     "lodash": "^4.17.21",
+    "primeicons": "^5.0.0",
+    "primevue": "^3.12.4",
     "vue": "^3.2.31",
     "vue-router": "^4.0.14",
     "vue-toastification": "^2.0.0-rc.5"

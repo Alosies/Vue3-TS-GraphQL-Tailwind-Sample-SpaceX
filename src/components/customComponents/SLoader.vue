@@ -7,7 +7,14 @@
       viewBox="0 0 24 24"
       data-test="loader"
     >
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      ></circle>
       <path
         class="opacity-75"
         fill="currentColor"
